@@ -4,5 +4,6 @@ import Vapor
 public func routes(_ router: Router) throws {
     let userController = UserController()
     router.get("hello", String.parameter, use: userController.index)
+    router.post("hello", use: userController.create)
 
 }

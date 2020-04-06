@@ -14,4 +14,9 @@ final class UserController {
         return "Hello \(name)!!!"
     }
     
+    func create(_ req: Request) throws -> Future<User> {
+        return try req.content.decode(User.self).flatMap({ (user) in
+            return user.create(on: req)
+        })
+    }
 }

@@ -8,7 +8,10 @@
 import Vapor
 
 final class UserController {
+    
     func index(_ req: Request) throws -> String {
-        return "Hi!"
+        let name = try req.parameters.next(String.self)
+        return "Hello \(name)!!!"
     }
+    
 }

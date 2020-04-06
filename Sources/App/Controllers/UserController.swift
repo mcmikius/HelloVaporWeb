@@ -19,4 +19,8 @@ final class UserController {
             return user.create(on: req)
         })
     }
+    
+    func users(_ req: Request) throws -> Future<[User]> {
+        return User.query(on: req).all()
+    }
 }

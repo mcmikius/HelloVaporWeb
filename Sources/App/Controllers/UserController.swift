@@ -29,4 +29,8 @@ final class UserController {
             return user.delete(on: req)
         }).transform(to: .ok)
     }
+    
+    func web(_ req: Request) throws -> Future<View> {
+        return try req.view().render("users", userInfo: ["users": User.query(on: req).all()])
+    }
 }

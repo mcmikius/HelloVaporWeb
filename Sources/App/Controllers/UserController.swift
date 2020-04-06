@@ -23,4 +23,10 @@ final class UserController {
     func users(_ req: Request) throws -> Future<[User]> {
         return User.query(on: req).all()
     }
+    
+    func delete(_ req: Request) throws -> Future<HTTPStatus> {
+        return try req.parameters.next(User.self).flatMap({ (user) in
+            return user.delete(on: req)
+        }).transform(to: .ok)
+    }
 }

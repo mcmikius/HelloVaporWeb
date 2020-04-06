@@ -7,4 +7,5 @@ public func routes(_ router: Router) throws {
     router.get("hello", String.parameter, use: userController.index)
     router.post("users", use: userController.create)
     router.get("users", use: userController.users)
+    router.delete("users", User.parameter, use: userController.delete)
 }
